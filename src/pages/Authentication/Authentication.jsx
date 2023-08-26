@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Authentication.scss";
 import Login from "../../components/Login/Login";
 import Registration from "../../components/Registration/Registration";
 
@@ -10,8 +11,8 @@ function Authentication() {
         {!isRegistration && <Login />}
         {isRegistration && <Registration />}
       </article>
-      <div>
-        <p>{!isRegistration ? "Don't have an account?" : "Already have an account?" } <span onClick={()=> setIsRegistration(!isRegistration)}>{ !isRegistration ? "Sign up":"Login"}</span></p>        
+      <div className="authentication__message-container">
+        <p>{!isRegistration ? "Don't have an account?" : "Already have an account?" } <span onClick={()=> setIsRegistration(!isRegistration)} className="authentication__custom">{ !isRegistration ? "Sign up":"Login"}</span></p>        
       </div>
     </section>
   );
