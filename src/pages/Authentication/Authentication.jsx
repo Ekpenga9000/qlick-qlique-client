@@ -6,7 +6,7 @@ function Authentication() {
   const [isRegistration, setIsRegistration] = useState(false);
   return (
     <section className="authentication">
-      <article>
+      <article className="authentication__article">
         {!isRegistration && <Login />}
         {isRegistration && <Registration />}
       </article>
