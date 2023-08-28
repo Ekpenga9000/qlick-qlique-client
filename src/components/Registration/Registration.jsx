@@ -8,7 +8,7 @@ import {
   MdOutlineDriveFileRenameOutline,
 } from "react-icons/md";
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
-import { FcGoogle } from "react-icons/fc";
+
 
 
 function Registration() {
