@@ -1,0 +1,68 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.post{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 0.3125rem;
+    &__img-container{
+        height: 3rem;
+        width: 3rem;
+        border-radius:50%;
+        cursor: pointer;
+    }
+    &__user-details{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    &__date{ 
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: $Light-slate-gray;
+    }
+    &__clique{
+        font-size:0.8rem;
+        font-weight: 500;
+        background-color: $Light-gray2;
+        padding: 0.3rem 0.7rem;
+        border-radius:0.3125rem;
+        cursor: pointer;
+    }
+    &__username{
+        color: $Dark-slate-gray;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    &__content{
+        margin-bottom:0.5rem;
+        width: 30rem;
+        word-break: break-all;
+
+    }
+    &__media{
+        @include post-img;
+        border-radius: 0.3125rem 0.3125rem 0 0; 
+    }
+    &__img{
+        @include post-img;
+        border-radius: 50%;
+    }
+    &__media-container{
+        height: 30rem;
+        width: 30rem; 
+    }
+    &__impressions{
+        background-color:$Light-gray2;
+        padding-block: 1rem;
+        padding-inline: 0.625rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+        color:$Dark-slate-gray;
+        border-radius: 0 0 0.3125rem 0.3125rem;
+    }
+}

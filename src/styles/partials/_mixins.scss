@@ -11,3 +11,63 @@
     cursor: pointer;
     transition: 0.4s ease;
 }
+
+@mixin btn-style{
+    color: #fff;
+    background-color: #000;
+    border: none;
+    padding-inline: 1.5rem;
+    padding-block: 0.9rem;
+    border-radius: 0.3125rem;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+@mixin user-page-banner-list{
+    display:flex;
+        align-items: center;
+        margin-inline: 1rem;
+        gap: 0.3rem;
+        cursor: pointer;
+        transition: 0.4s ease;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+}
+
+@mixin post-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+@mixin form-style{
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30vw;
+    &__input-div{
+        @include form-input-style;
+        border-bottom: 0.125rem solid transparent;   
+    }
+    &__input-div--border{
+        @include form-input-style;
+        border-bottom: 0.125rem solid #000;
+    }
+    &__input{
+        width:80%;
+        border: none;
+        padding:0.5rem 1rem 0.5rem 0;
+        outline: none;
+        cursor: pointer;
+    }
+    &__btn-container{
+        margin-top: 1rem;
+    }
+    &__btn{
+        @include btn-style;
+        text-decoration: none;
+    }
+}

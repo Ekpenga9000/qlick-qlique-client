@@ -1,0 +1,16 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.registration{
+    @include form-style;
+    &__btn-div{
+        margin-block:1rem;
+    }
+    &__btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+    }
+}
