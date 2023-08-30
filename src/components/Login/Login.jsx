@@ -11,16 +11,14 @@ function Login() {
 
   return (
     <article className="form-input">
-      {/* <h2 className="login__title">Qlick-Qlique</h2> */}
-      {/* <form onSubmit={handleSubmit} className="login__form"> */}
         <div className={!isUserActive ? "form-input__input-div":"form-input__input-div--border"}  onFocus={()=> setUserActive(true)} onBlur={()=> setUserActive(false)}>
-          <label htmlFor="user">
+          <label htmlFor="text">
             <AiOutlineUser />
           </label>  
           <input
             type="text"
-            name="user"
-            id="user"
+            name="text"
+            id="text"
             className="form-input__input"
             placeholder="username or email"
           />
@@ -41,7 +39,6 @@ function Login() {
         <div className="form-input__btn-container">
           <Button message={"Login"} />
         </div>
-      {/* </form> */}
     </article>
   );
 }

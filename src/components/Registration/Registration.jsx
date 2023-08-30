@@ -9,8 +9,6 @@ import {
 } from "react-icons/md";
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
 
-
-
 function Registration() {
   const [isRevealed, setRevealed] = useState(false);
   const [isRevealed2, setRevealed2] = useState(false);
@@ -21,12 +19,12 @@ function Registration() {
   const [isUserActive, setUserActive] = useState(false);
   const [isConPwdActive, setConPwdActive] = useState(false);
   const [isDOBActive, setDOBActive] = useState(false);
-  
+  const [isPhoneNumberActive, setPhoneNumberActive] = useState(false);
 
   const getMaxDate = () => {
     const today = new Date();
     const eighteenYearsAgo = new Date(
-      today.getFullYear() - 18,
+      today.getFullYear() - 13,
       today.getMonth(),
       today.getDate()
     );
@@ -97,6 +95,26 @@ function Registration() {
       </div>
       <div
         className={
+          !isPhoneNumberActive
+            ? "registration__input-div"
+            : "registration__input-div--border"
+        }
+        onFocus={() => setPhoneNumberActive(true)}
+        onBlur={() => setPhoneNumberActive(false)}
+      >
+        <label htmlFor="phone_number">
+          <MdAlternateEmail />
+        </label>
+        <input
+          type="tel"
+          name="phone_number"
+          id="phone_number"
+          className="registration__input"
+          placeholder="Phone number"
+        />
+      </div>
+      <div
+        className={
           !isDOBActive
             ? "registration__input-div"
             : "registration__input-div--border"
@@ -104,13 +122,13 @@ function Registration() {
         onFocus={() => setDOBActive(true)}
         onBlur={() => setDOBActive(false)}
       >
-        <label htmlFor="dob">
+        <label htmlFor="date_of_birth">
           <LiaBirthdayCakeSolid />
         </label>
         <input
           type="date"
-          name="dob"
-          id="dob"
+          name="date_of_birth"
+          id="date_of_birth"
           className="registration__input"
           max={getMaxDate()}
         />
@@ -169,8 +187,8 @@ function Registration() {
         </div>
         <input
           type={!isRevealed2 ? "password" : "text"}
-          name="password2"
-          id="password2"
+          name="confirm_pwd"
+          id="confirm_pwd"
           className="registration__input"
           placeholder="Confirm password"
         />
