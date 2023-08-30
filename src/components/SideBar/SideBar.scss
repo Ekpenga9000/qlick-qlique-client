@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.sidebar{
+    &__explore-container{
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        color:$Gray;
+        background-color:$Medium-light-gray;
+        padding: 0.5rem;
+        margin-block: 1rem;
+        border-radius: 0.3125rem;
+    }
+    &__zone-container{
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+    }
+}
