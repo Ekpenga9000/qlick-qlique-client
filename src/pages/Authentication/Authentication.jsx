@@ -74,8 +74,7 @@ function Authentication() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    console.log("The form", formRef.current);
-
+   
     if (isRegistration) {
       const registrationDetails = handleRegistrationValidation();
 
@@ -90,13 +89,13 @@ function Authentication() {
         confirm_pwd: registrationDetails.confirm_pwd,
     })
         .then((response) => {
-            sessionStorage.setItem("token", response.data.token);
-            navigate(`/users/${response.data.userId}`);
+          sessionStorage.setItem("token", response.data.token);
+            navigate(`/profiles/${response.data.userId}`);
       
         })
         .catch((error) => {
           setErr(true);
-          setErrMsg(`${error.message}`)
+          setErrMsg(`${error.message.message}`)
         });
 
 
@@ -110,7 +109,7 @@ function Authentication() {
         })
         .then((response) => {
           sessionStorage.setItem("token", response.data.token);
-          navigate(`/users/${response.data.userId}`);
+          navigate(`/profiles/${response.data.userId}`);
         })
         .catch((error) => {
           setErr(true);

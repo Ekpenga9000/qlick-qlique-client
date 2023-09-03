@@ -1,18 +1,23 @@
 import React from "react";
 import "./UserBanner.scss";
-// import userImg from "../../assets/images/sampleman.jpg";
+import { Link } from "react-router-dom";
 import { IoIosNotificationsOutline, IoIosPeople } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BsPeople, BsChatLeftDots } from "react-icons/bs";
 
 function UserBanner({ user }) {
   const { id, avatar_url, display_name } = user;
-  
+
   return (
     <article className="user" key={id}>
       <div className="user__profile">
         <div className="user__img-container">
-          <img src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`} alt={display_name} crossOrigin="anonymous" className="user__img" />
+          <img
+            src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`}
+            alt={display_name}
+            crossOrigin="anonymous"
+            className="user__img"
+          />
         </div>
 
         <span className="user__username">{display_name}</span>
@@ -31,9 +36,11 @@ function UserBanner({ user }) {
           <li className="user__list">
             <IoSettingsOutline />
           </li>
-          <li className="user__list--black">
+          <li>
+            <Link to={"/cliques"} className="user__list--black"> 
             <IoIosPeople />
-            <span>Qliques</span>
+              <span>Qliques</span>
+            </Link>  
           </li>
         </ul>
       </div>
