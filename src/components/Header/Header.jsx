@@ -47,6 +47,7 @@ function Header({ userId }) {
   const { id, avatar_url, display_name } = userDetails;
 
   return (
+    <>
     <article className="user" key={id}>
       <Link to={ `/profiles/${userId}` } className="user__profile">
         <div className="user__img-container">
@@ -86,7 +87,9 @@ function Header({ userId }) {
           </li>
         </ul>
       </div>
-    </article>
+      </article>
+      
+      </>  
   );
 }
 

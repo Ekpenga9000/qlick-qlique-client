@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Clique from "../../../components/Clique/Clique";
 import "./CliquePage.scss";
 import axios from "axios";
+import Button from "@mui/material/Button";
 
 function CliquePage() {
   const formRef = useRef();
@@ -13,8 +14,6 @@ function CliquePage() {
   const [isClicked, setIsClicked] = useState(false);
   const [err, setErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  const [altDisplay, setAltDisplay] = useState("");
-  const [hasData, setHasData] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -120,15 +119,24 @@ function CliquePage() {
   return (
     <section className="cliquepage">
       <div className="cliquepage__top-bar">
-        <div>Cliques</div>
-        <form onSubmit={handleSearch} ref={searchRef}>
-          <input type="search" name="search" placeholder="Search" />
-          <button>search</button>
+        <h2>Cliques</h2>
+        <form
+          onSubmit={handleSearch}
+          ref={searchRef}
+          className="cliquepage__form"
+        >
+          <input
+            type="search"
+            name="search"
+            placeholder="Search"
+            className="cliquepage__input"
+          />
+          <button className="cliquepage__btn">Search</button>
         </form>
         <div>
-          <button onClick={() => setIsClicked(!isClicked)}>
+          <Button variant="outlined" onClick={() => setIsClicked(!isClicked)}>
             {isClicked ? "Cancel" : "Create Clique"}
-          </button>
+          </Button>
         </div>
       </div>
       {isClicked && (
@@ -143,12 +151,14 @@ function CliquePage() {
               name="name"
               id="name"
               placeholder="What is your Clique called? "
+              className="clique__input"
             />
             <input
               type="text"
               name="category"
               id="category"
               placeholder="Category"
+              className="clique__input"
             />
             <textarea
               name="description"
@@ -156,17 +166,29 @@ function CliquePage() {
               cols="30"
               rows="10"
               placeholder="Please describe your Clique"
+              className="clique__text-area"
             ></textarea>
             {err && <div>{errMsg}</div>}
-            <button>Create Clique</button>
-            <button onClick={() => setIsClicked(false)}>Cancel</button>
+            <button className="clique__btn--filled">Create Clique</button>
+            <button
+              onClick={() => setIsClicked(false)}
+              className="clique__btn--outline"
+            >
+              Cancel
+            </button>
           </form>
         </article>
       )}
       <section className="cliqueList">
         {!!cliqueData ? (
           cliqueData.map((clique) => {
-            return <Clique clique={clique} key={clique?.id} />;
+            return (
+              <Clique
+                clique={clique}
+                key={clique?.id}
+                className="cliqueList__item"
+              />
+            );
           })
         ) : (
           <div>No cliques to display</div>
