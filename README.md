@@ -17,6 +17,15 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ![Alt text](image.png)
 
+Dummy user: {
+  "firstname": "Emily",
+  "lastname": "Smith",
+  "phone_number": "987-654-3210",
+  "email": "emily.smith@email.com",
+  "password": "AnotherSecret123",
+  "username": "emily_smith85"
+}
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
