@@ -1,0 +1,16 @@
+.clique-detail{
+  
+    &__banner-div{
+        height: 30vh;
+    }
+    &__banner{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    &__details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,43 +1,69 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import "./UserPage.scss";
-import axios from 'axios';
-import UserBanner from '../../../components/UserBanner/UserBanner';
-import Post from '../../../components/Post/Post';
-import { useParams } from 'react-router';
+import axios from "axios";
+import { useParams } from "react-router";
+import UserPostList from "../../../components/UserPostsList/UserPostList";
 
-function UserPage() {
-  const { userId } = useParams()
+function UserPage({ setLoggedIn, setUserId }) {
+  const { userId } = useParams();
   const [userDeets, setUserDeets] = useState(null);
-  
+
   useEffect(() => {
-    const token = sessionStorage.getItem("token")
-    
+    const token = sessionStorage.getItem("token");
+
     axios
-      .get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}`, {
+      .get(`${import.meta.env.VITE_SERVER_URL}/profiles/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        withCredentials:true
+        withCredentials: true,
       })
-      .then(res => {
+      .then((res) => {
         setUserDeets(res.data);
+        sessionStorage.setItem("userId", res.data.id);
+        setUserId(res.data.id);
+        console.log("The user information", res.data);
+        setLoggedIn(true);
       })
-      .catch(err => { console.log(err) });
-  }, [userId])
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userId]);
 
   if (!userDeets) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
+
+  const { display_name, created_at, bio, id  } = userDeets;
+
+  const formatDate = (dateString) => {
+
+    const dateObject = new Date(dateString);
+    const month = dateObject.getMonth() + 1;
+    const day = dateObject.getDate();
+    const year = dateObject.getFullYear();
+    const hours = dateObject.getHours();
+    const minutes = dateObject.getMinutes();
+    const americanDate = `${month}/${day}/${year}`;
+    const americanTime = `${hours}:${minutes}`;
+    
+    return `${americanDate} ${americanTime}`; 
+  }
+
+  const joined = formatDate(created_at);
+
   return (
-    <section className='userpage'> 
-      <div className='userpage__profile'>
-        <UserBanner user={userDeets}/>
-      </div>
-      <div className='userpage__posts'>
-        <Post/>
-      </div>
+    <section className="userpage">
+      {userDeets && <article className="userpage__profile">
+        <h3>{display_name}</h3>
+        <p>{bio}</p>
+        <address>Joined at {joined}</address>
+      </article>}
+      <article className="userpage__posts">
+        <UserPostList user_id={ id } />
+      </article>
     </section>
-  )
+  );
 }
 
-export default UserPage
+export default UserPage;
