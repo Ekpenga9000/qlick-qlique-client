@@ -8,12 +8,16 @@ import { useNavigate } from "react-router-dom";
 import "./clique.scss";
 
 function Clique({ clique }) {
-  console.log("Clique", clique)
+  
   const { id, name, category, description, display_name } = clique;
 
   const navigate = useNavigate()
   const handleNavigation = () => {
     navigate(`/cliques/${id}`)
+  }
+
+  const handleAddToFavourites = () => {
+    
   }
 
   return (
@@ -30,8 +34,11 @@ function Clique({ clique }) {
           {description}
         </Typography>
       </CardContent>
-      <CardActions>
+        <CardActions>
+          <div className="clique__btn-div">
         <Button size="small" onClick={handleNavigation}>Visit Clique</Button>
+            <Button size="small" onClick={handleAddToFavourites}>+ Add to favourites</Button>
+            </div>
       </CardActions>
       </Card>
       </article>

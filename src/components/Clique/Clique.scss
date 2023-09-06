@@ -1,3 +1,8 @@
 .clique{
     flex-basis: 33.3%;
+    &__btn-div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
 }

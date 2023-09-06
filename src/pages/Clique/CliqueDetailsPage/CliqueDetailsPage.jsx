@@ -35,7 +35,7 @@ function CliqueDetailsPage() {
   if (!cliqueData) {
     return <>Loading...</>;
   }
-  const { name, description, category, username, display_name, banner_url } =
+  const { name, description, category, username, display_name} =
     cliqueData;
 
   return (
@@ -62,6 +62,7 @@ function CliqueDetailsPage() {
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
                 {category}
               </Typography>
+              <Typography variant="body2">About:</Typography>
               <Typography variant="body2">{description}</Typography>
             </CardContent>
           </Card>

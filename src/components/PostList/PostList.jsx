@@ -139,7 +139,7 @@ function PostList({ cliqueid }) {
 
           <article>
               <div className="postList__post-title">
-                <h3>Posts</h3>
+                <h3>{postData.length ? "Posts" : "No Posts Yet"}</h3>
               </div>
               
         {postData.length ? (
@@ -147,7 +147,7 @@ function PostList({ cliqueid }) {
               return <CliquePost post={post} key={ post.id } />;
           })
         ) : (
-          <div>No posts yet!!</div>
+          <div></div>
         )}
         {isErr && <div>{isErrMsg}</div>}
       </article>
