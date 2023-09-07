@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables" as *;
+.userFollow{
+    margin-block: 0.5rem;
+    border: 0.0625rem solid $Light-slate-gray;
+    border-radius: 0.3125rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__link{
+        text-decoration: none;
+    }
+    &__text{
+        max-width: 350px; 
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-right: 1rem;
+    }
+}

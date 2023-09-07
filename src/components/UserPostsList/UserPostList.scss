@@ -1,0 +1,9 @@
+@use "../../styles/partials/variables" as *;
+
+.userPostList{
+    padding: 1rem 1.5rem;
+    min-height: 100vh;
+    &__title{
+        padding-block: 1rem;
+    }
+}

@@ -3,6 +3,7 @@ import "./UserPage.scss";
 import axios from "axios";
 import { useParams } from "react-router";
 import UserPostList from "../../../components/UserPostsList/UserPostList";
+import UserFollowList from "../../../components/UserFollowList/UserFollowList";
 
 function UserPage({ setLoggedIn, setUserId }) {
   const { userId } = useParams();
@@ -59,9 +60,15 @@ function UserPage({ setLoggedIn, setUserId }) {
         <p>{bio}</p>
         <address>Joined at {joined}</address>
       </article>}
-      <article className="userpage__posts">
-        <UserPostList user_id={ id } />
+      <article className="userpage__main">
+        <div className="userpage__following">
+          <UserFollowList user_id={ id }/>
+        </div>
+        <div className="userpage__posts">
+          <UserPostList user_id={ id } />
+        </div>
       </article>
+     
     </section>
   );
 }

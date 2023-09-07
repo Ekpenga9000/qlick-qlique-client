@@ -41,5 +41,21 @@
         background-color: #000;
         color: #fff;
         padding-block:1rem;
+        margin-bottom:2rem;
+    }
+    &__noimg-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-block: 1rem;
+    }
+    &__noimg-div{
+        height: 20rem;
+        width: 20rem;
+    }
+    &__noimg{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 }

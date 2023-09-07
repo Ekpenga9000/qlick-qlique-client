@@ -25,6 +25,7 @@ function CliquePage() {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res.data.clique);
         setCliqueData(res.data.clique);
       })
       .catch((error) => {

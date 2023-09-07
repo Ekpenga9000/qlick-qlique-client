@@ -5,11 +5,34 @@
     min-height: 100vh;
     background-color: $Light-gray;
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding-top:3rem;
+    &__message{
+        width: 60vw;
+        // height: 100vh;
+    }
     &__title{
         margin-block: 1rem;
+    }
+    &__written{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__p{
+        width: 60%;
+        margin-bottom: 0.5rem;
+        font-size:0.75rem;
+        font-weight:500;
+        color: #000;
+        &--large{
+            font-size: 0.8125rem;
+            font-weight:500;
+            color: #000;
+        }
+    }
+    &__image{
+        height: 15rem;
     }
     &__custom{
         cursor: pointer;
@@ -23,5 +46,14 @@
         color: #ff0000;
         font-size: 0.8rem;
         margin-bottom: 0.3rem;
+    }
+    &__link{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        margin-bottom: 1rem;
+        font-weight: 500;
     }
 }
