@@ -7,9 +7,13 @@
     display: flex;
     align-items: center;
     padding-top:3rem;
+    // background-color: #5272ff0e;
     &__message{
         width: 60vw;
         // height: 100vh;
+    }
+    &__img{
+        height: 4rem;
     }
     &__title{
         margin-block: 1rem;

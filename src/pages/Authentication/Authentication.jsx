@@ -6,7 +6,8 @@ import axios from "axios";
 import "./Authentication.scss";
 import Login from "../../components/Login/Login";
 import Registration from "../../components/Registration/Registration";
-import community from "../../assets/images/community.png"
+import community from "../../assets/images/community.png";
+import logo from "../../assets/images/logo.png";
 
 function Authentication() {
   const formRef = useRef();
@@ -133,7 +134,8 @@ function Authentication() {
           </div>  
       </article>
       <article className="authentication__article">
-        <h2 className="authentication__title">Qlick-Qlique</h2>
+        {/* <h2 className="authentication__title">Qlick-Qlique</h2> */}
+        <img src={logo} alt="Qlick Qlique logo" className="authentication__img"/>
         <form className="form" onSubmit={handleOnSubmit} ref={formRef}>
           {!isRegistration && <Login />}
           {isRegistration && <Registration />}
@@ -169,30 +171,6 @@ function Authentication() {
           </p>
         </div>
       </article>
-      {/* <div className="registration__btn-div">
-        <a
-          href={`${import.meta.env.VITE_SERVER_URL}/auth/google`}
-          className="registration__btn"
-        >
-          <span>
-            {!isRegistration ? "Login with Google" : "Signup with Google"}{" "}
-          </span>
-          <FcGoogle />
-        </a>
-      </div>
-      <div className="authentication__message-container">
-        <p>
-          {!isRegistration
-            ? "Don't have an account?"
-            : "Already have an account?"}{" "}
-          <span
-            onClick={() => setIsRegistration(!isRegistration)}
-            className="authentication__custom"
-          >
-            {!isRegistration ? "Sign up" : "Login"}
-          </span>
-        </p>
-      </div> */}
     </section>
   );
 }

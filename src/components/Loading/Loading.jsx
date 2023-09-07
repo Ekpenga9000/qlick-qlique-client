@@ -1,12 +1,13 @@
 import React from 'react';
 import "./Loading.scss";
-import loadingImg from "../../assets/images/loading.gif";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function Loading() {
   return (
-      <section className='loading'>
-          <img src={ loadingImg } alt="Loading data"  className='loading__img'/>
-        </section>
+    <Box sx={{ display: 'flex' }} color={"inherit"} className="loading">
+        <CircularProgress />
+  </Box>
   )
 }
 

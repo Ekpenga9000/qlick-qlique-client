@@ -14,7 +14,7 @@
 
 @mixin btn-style{
     color: #fff;
-    background-color: #000;
+    background-color: #5271ff;
     border: none;
     padding-inline: 1.5rem;
     padding-block: 0.9rem;
@@ -54,7 +54,7 @@
     }
     &__input-div--border{
         @include form-input-style;
-        border-bottom: 0.125rem solid #000;
+        border-bottom: 0.125rem solid #5271ff;
     }
     &__input{
         width:80%;

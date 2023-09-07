@@ -41,7 +41,7 @@ function Post({ post }) {
       <div className="post__content-container">
         <div className="post__user-details">
           <div className="post__details">
-            <p className="post__username">@{display_name}</p>
+            <p className="post__username">{display_name}</p>
             <p className="post__date">{ formatDate(created_by) }</p>
           </div>
           <Link to={`/cliques/${clique_id}`} className="post__clique">

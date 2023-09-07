@@ -1,7 +1,6 @@
 import {useState} from "react";
 import { Link } from "react-router-dom";
 import "../Post/Post.scss";
-import { HiMiniUserGroup } from "react-icons/hi2";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GoComment } from "react-icons/go";
 import { BsFlag, BsPatchCheckFill } from "react-icons/bs";
@@ -44,7 +43,7 @@ function CliquePost({ post }) {
     <div className="post__content-container">
       <div className="post__user-details">
         <div className="post__details">
-          <Link to={`/profiles/${user_id}`} className="post__username">@{display_name}</Link>
+          <Link to={`/profiles/${user_id}`} className="post__username">{display_name}</Link>
           <p className="post__date">{ newDate }</p>
         </div>
         {user === user_id.toString() && <span className="post__clique">

@@ -75,12 +75,12 @@ function Header({ userId }) {
           <li className="user__list">
             <IoSettingsOutline />
           </li>
-          <li>
+          {/* <li> */}
             <Link to={"/cliques"} className="user__list--black">
               <IoIosPeople />
               <span>Qliques</span>
             </Link>
-          </li>
+          {/* </li> */}
           <li className="user__list--black" onClick={handleClick}>
               <CgLogOut />
               <span>Log out</span>

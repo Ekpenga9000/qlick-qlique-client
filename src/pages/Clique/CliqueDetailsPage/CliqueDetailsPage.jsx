@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import PostList from "../../../components/PostList/PostList";
+import Loading from "../../../components/Loading/Loading";
 
 function CliqueDetailsPage() {
   const { cliqueid } = useParams();
@@ -33,7 +34,7 @@ function CliqueDetailsPage() {
   }, [cliqueid]);
 
   if (!cliqueData) {
-    return <>Loading...</>;
+    return <Loading/>;
   }
   const { name, description, category, username, display_name} =
     cliqueData;

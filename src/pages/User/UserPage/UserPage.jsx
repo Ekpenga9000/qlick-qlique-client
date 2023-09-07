@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 import UserPostList from "../../../components/UserPostsList/UserPostList";
 import UserFollowList from "../../../components/UserFollowList/UserFollowList";
+import Loading from "../../../components/Loading/Loading";
 
 function UserPage({ setLoggedIn, setUserId }) {
   const { userId } = useParams();
@@ -32,7 +33,7 @@ function UserPage({ setLoggedIn, setUserId }) {
   }, [userId]);
 
   if (!userDeets) {
-    return <p>Loading...</p>;
+    return <Loading/>;
   }
 
   const { display_name, created_at, bio, id  } = userDeets;

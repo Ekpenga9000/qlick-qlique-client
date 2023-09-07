@@ -22,7 +22,7 @@
         height: 100%;
         border:none;
         width: 30%;
-        background-color: #000;
+        background-color: #5271ff;
         color: #fff;
         border-radius:  0 0.3125rem 0.3125rem 0;
     }
@@ -58,7 +58,7 @@
     &__btn{
         @extend .clique__input;
         &--filled{
-            background-color: #000;
+            background-color: #5271ff;
             color: #fff;
             border: none;
             height: 3rem;

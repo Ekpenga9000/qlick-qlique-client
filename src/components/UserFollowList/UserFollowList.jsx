@@ -4,6 +4,7 @@ import axios from "axios";
 import UserFollow from "../UserFollow/UserFollow";
 import { useNavigate, Link } from "react-router-dom";
 import Clique from "../../assets/images/clique.png";
+import Loading from "../Loading/Loading";
 
 function UserFollowList({ user_id }) {
   const [favouritesData, setFavouritesData] = useState([]);
@@ -59,7 +60,7 @@ function UserFollowList({ user_id }) {
     <article className="userFollowList">
       <h3 className="userFollowList__title">Following</h3>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loading/>
       ) : (
         <>
           {!!favouritesData.length ? (
