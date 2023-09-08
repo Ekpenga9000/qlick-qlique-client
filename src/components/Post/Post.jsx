@@ -15,7 +15,7 @@ function Post({ post }) {
   const { id, user_id,
     clique_id, content,
     display_name, created_by,
-    avatar_url, image_url
+    avatar_url, image_url, name
   } = post; 
 
   const formatDate = (dateString) => {
@@ -41,11 +41,11 @@ function Post({ post }) {
       <div className="post__content-container">
         <div className="post__user-details">
           <div className="post__details">
-            <p className="post__username">@{display_name}</p>
+            <p className="post__username">{display_name}</p>
             <p className="post__date">{ formatDate(created_by) }</p>
           </div>
           <Link to={`/cliques/${clique_id}`} className="post__clique">
-            <HiMiniUserGroup /> visit Clique
+            <HiMiniUserGroup /> visit {name}
           </Link>
         </div>
         <p className="post__content">

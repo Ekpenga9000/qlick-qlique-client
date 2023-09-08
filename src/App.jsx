@@ -6,6 +6,7 @@ import UserPage from './pages/User/UserPage/UserPage';
 import CliquePage from './pages/Clique/CliquePage/CliquePage';
 import CliqueDetailsPage from './pages/Clique/CliqueDetailsPage/CliqueDetailsPage';
 import Header from './components/Header/Header';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
         <Route path='/' element={ <Authentication/> } />
         <Route path='/profiles/:userId' element={<UserPage setUserId={setUserId} setLoggedIn={ setLoggedIn } /> } />
         <Route path='/cliques' element={<CliquePage/>} />
-         <Route path='/cliques/:cliqueid' element={ <CliqueDetailsPage/> } />
+        <Route path='/cliques/:cliqueid' element={<CliqueDetailsPage />} />
+        <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
       </BrowserRouter> 
   )

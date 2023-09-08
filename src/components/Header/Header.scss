@@ -2,10 +2,10 @@
 @use "../../styles/partials/variables" as *;
 
 .user{
-    background-color: black;
+    background-color: #5271ff;
     padding-block: 1rem;
     width: 100%;
-    color: $Light-slate-gray;
+    color: #fff;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -18,7 +18,7 @@
     }
     &__username{
         font-weight: 500;
-        color: $Light-slate-gray;
+        color: #fff;
     }
     &__img-container{
         height: 3rem;
@@ -44,7 +44,7 @@
             @include user-page-banner-list;
             text-decoration: none;
             border: 0.0625rem solid $Light-slate-gray;
-            color: $Light-slate-gray;
+            color: #fff;
             border-radius: 1.875rem;
             &:hover{
                 border: 0.0625rem solid $Pure-white;

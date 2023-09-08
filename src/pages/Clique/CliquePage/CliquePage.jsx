@@ -25,6 +25,7 @@ function CliquePage() {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res.data.clique);
         setCliqueData(res.data.clique);
       })
       .catch((error) => {
@@ -134,7 +135,7 @@ function CliquePage() {
           <button className="cliquepage__btn">Search</button>
         </form>
         <div>
-          <Button variant="outlined" onClick={() => setIsClicked(!isClicked)}>
+          <Button variant="contained" onClick={() => setIsClicked(!isClicked)}>
             {isClicked ? "Cancel" : "Create Clique"}
           </Button>
         </div>

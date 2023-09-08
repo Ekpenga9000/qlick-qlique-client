@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CliquePost from "../CliquePost/CliquePost";
 import "./PostList.scss";
 import axios from "axios";
+import postclique from "../../assets/images/postclique.png";
 
 function PostList({ cliqueid }) {
   if (!cliqueid) {
@@ -139,15 +140,22 @@ function PostList({ cliqueid }) {
 
           <article>
               <div className="postList__post-title">
-                <h3>Posts</h3>
-              </div>
+                <h3 className="postList__h3">{postData.length ? "Posts" : "No Posts Yet"}</h3>
+        </div>
+
+        {!postData.length && <div className="postList__noimg-container">
+          <div className="postList__noimg-div">
+          <img src={postclique} alt="No posts" className="postList__noimg" />
+          </div>
+          <p>C'mon let's build our clique!</p>
+        </div>}
               
         {postData.length ? (
           postData.map((post) => {
               return <CliquePost post={post} key={ post.id } />;
           })
         ) : (
-          <div>No posts yet!!</div>
+          <div></div>
         )}
         {isErr && <div>{isErrMsg}</div>}
       </article>

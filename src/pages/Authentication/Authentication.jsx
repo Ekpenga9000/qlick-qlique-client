@@ -6,6 +6,8 @@ import axios from "axios";
 import "./Authentication.scss";
 import Login from "../../components/Login/Login";
 import Registration from "../../components/Registration/Registration";
+import community from "../../assets/images/community.png";
+import logo from "../../assets/images/logo.png";
 
 function Authentication() {
   const formRef = useRef();
@@ -74,31 +76,29 @@ function Authentication() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-   
+
     if (isRegistration) {
       const registrationDetails = handleRegistrationValidation();
 
-      axios.post(`${import.meta.env.VITE_SERVER_URL}/auth/register`, {
-        firstname: registrationDetails.firstname,
-        lastname: registrationDetails.lastname,
-        email: registrationDetails.email,
-        date_of_birth: registrationDetails.date_of_birth,
-        phone_number: registrationDetails.phone_number,
-        username: registrationDetails.username,
-        password: registrationDetails.password,
-        confirm_pwd: registrationDetails.confirm_pwd,
-    })
+      axios
+        .post(`${import.meta.env.VITE_SERVER_URL}/auth/register`, {
+          firstname: registrationDetails.firstname,
+          lastname: registrationDetails.lastname,
+          email: registrationDetails.email,
+          date_of_birth: registrationDetails.date_of_birth,
+          phone_number: registrationDetails.phone_number,
+          username: registrationDetails.username,
+          password: registrationDetails.password,
+          confirm_pwd: registrationDetails.confirm_pwd,
+        })
         .then((response) => {
           sessionStorage.setItem("token", response.data.token);
-            navigate(`/profiles/${response.data.userId}`);
-      
+          navigate(`/profiles/${response.data.userId}`);
         })
         .catch((error) => {
           setErr(true);
-          setErrMsg(`${error.message.message}`)
+          setErrMsg(`${error.message.message}`);
         });
-
-
     } else if (!isRegistration) {
       const loginDetails = handleLoginValidation();
 
@@ -123,8 +123,19 @@ function Authentication() {
 
   return (
     <section className="authentication">
+      <article className="authentication__message">
+      <p className="authentication__p--large">Create Cliques with just a click!</p>
+        <div className="authentication__img-div">
+          <img src={ community } alt="Home page" className="authentication__image" />
+        </div>
+        <div className="authentication__written">
+        <p className="authentication__p">Introducing Qlick-Qlique, where "Less is More" meets social media magic! 🚀</p>
+          <p className="authentication__p">With Qlick-Qlique, you decide what matters. Say goodbye to information overload and hello to curated content that truly speaks to your interests. Less clutter, more clarity – it's social media, your way.</p>
+          </div>  
+      </article>
       <article className="authentication__article">
-        <h2 className="authentication__title">Qlick-Qlique</h2>
+        {/* <h2 className="authentication__title">Qlick-Qlique</h2> */}
+        <img src={logo} alt="Qlick Qlique logo" className="authentication__img"/>
         <form className="form" onSubmit={handleOnSubmit} ref={formRef}>
           {!isRegistration && <Login />}
           {isRegistration && <Registration />}
@@ -135,31 +146,31 @@ function Authentication() {
             <p className="authentication__error">{errMsg}</p>
           </div>
         )}
-      </article>
-      <div className="registration__btn-div">
-        <a
-          href={`${import.meta.env.VITE_SERVER_URL}/auth/google`}
-          className="registration__btn"
-        >
-          <span>
-            {!isRegistration ? "Login with Google" : "Signup with Google"}{" "}
-          </span>
-          <FcGoogle />
-        </a>
-      </div>
-      <div className="authentication__message-container">
-        <p>
-          {!isRegistration
-            ? "Don't have an account?"
-            : "Already have an account?"}{" "}
-          <span
-            onClick={() => setIsRegistration(!isRegistration)}
-            className="authentication__custom"
+        <div className="">
+          <a
+            href={`${import.meta.env.VITE_SERVER_URL}/auth/google`}
+            className="authentication__link"
           >
-            {!isRegistration ? "Sign up" : "Login"}
-          </span>
-        </p>
-      </div>
+            <span>
+              {!isRegistration ? "Login with Google" : "Signup with Google"}{" "}
+            </span>
+            <FcGoogle />
+          </a>
+        </div>
+        <div className="authentication__message-container">
+          <p>
+            {!isRegistration
+              ? "Don't have an account?"
+              : "Already have an account?"}{" "}
+            <span
+              onClick={() => setIsRegistration(!isRegistration)}
+              className="authentication__custom"
+            >
+              {!isRegistration ? "Sign up" : "Login"}
+            </span>
+          </p>
+        </div>
+      </article>
     </section>
   );
 }
