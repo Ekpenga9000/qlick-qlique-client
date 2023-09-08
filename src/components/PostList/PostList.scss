@@ -40,10 +40,16 @@
     &__post-title{
         display: flex;
         justify-content: center;
-        background-color: #5271ff;
-        color: #fff;
         padding-block:1rem;
         margin-bottom:2rem;
+    }
+    &__h3{
+        background-color: #5271ff;
+        color: #fff;
+        width: 37rem;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        border-radius: 0.3125rem;
     }
     &__noimg-container{
         display: flex;

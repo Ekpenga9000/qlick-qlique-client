@@ -43,7 +43,7 @@ function CliqueDetailsPage() {
     <section className="clique-detail">
       <article className="clique-detail__hero">
         <div className="clique-detail__details">
-          <h2>Clique page</h2>
+          <h2 className="clique-detail__h2">Clique page</h2>
           <Card sx={{ minWidth: 600 }}>
             <CardContent>
               <Typography

@@ -140,7 +140,7 @@ function PostList({ cliqueid }) {
 
           <article>
               <div className="postList__post-title">
-                <h3>{postData.length ? "Posts" : "No Posts Yet"}</h3>
+                <h3 className="postList__h3">{postData.length ? "Posts" : "No Posts Yet"}</h3>
         </div>
 
         {!postData.length && <div className="postList__noimg-container">
