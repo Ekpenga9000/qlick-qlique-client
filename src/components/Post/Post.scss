@@ -27,7 +27,7 @@
     &__clique{
         font-size:0.8rem;
         font-weight: 500;
-        background-color: #5271ff;
+        background-color: $Primary-blue;
         padding: 0.3rem 0.7rem;
         border-radius:0.3125rem;
         text-decoration: none;
@@ -39,7 +39,7 @@
         font-weight: 500;
         cursor: pointer;
         text-decoration: none;
-        color: #5271ff;
+        color: $Primary-blue;
     }
     &__content{
         margin-bottom:0.5rem;

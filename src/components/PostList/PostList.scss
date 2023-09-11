@@ -31,7 +31,7 @@
     }
     &__btn{
         padding: 0.5rem 1.5rem;
-        background-color: #5271ff;
+        background-color: $Primary-blue;
         color: #fff;
         margin-block: 0.5rem;
         border: none;
@@ -44,7 +44,7 @@
         margin-bottom:2rem;
     }
     &__h3{
-        background-color: #5271ff;
+        background-color: $Primary-blue;
         color: #fff;
         width: 37rem;
         text-align: center;

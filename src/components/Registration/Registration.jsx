@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Registration.scss";
 import Button from "../Button/Button";
 import { AiOutlineUser } from "react-icons/ai";
-import { BsEyeSlash, BsEye } from "react-icons/bs";
+import { BsEyeSlash, BsEye, BsTelephone } from "react-icons/bs";
 import {
   MdAlternateEmail,
   MdOutlineDriveFileRenameOutline,
@@ -103,7 +103,7 @@ function Registration() {
         onBlur={() => setPhoneNumberActive(false)}
       >
         <label htmlFor="phone_number">
-          <MdAlternateEmail />
+          <BsTelephone />
         </label>
         <input
           type="tel"

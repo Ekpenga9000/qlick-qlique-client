@@ -7,12 +7,12 @@ import Clique from "../../assets/images/clique.png";
 import Loading from "../Loading/Loading";
 
 function UserFollowList({ user_id }) {
-  const [favouritesData, setFavouritesData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
-
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
+
+  const [favouritesData, setFavouritesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     axios
@@ -25,7 +25,10 @@ function UserFollowList({ user_id }) {
       .then((res) => {
         console.log("The favourites", res.data);
         setFavouritesData(res.data);
-        setIsLoading(false); // Set loading to false when data is fetched
+        setIsLoading(false);
+        if (!userId || (user_id.toString() !== userId.toString())) {
+             navigate("/");
+          }
       })
       .catch((err) => {
         console.log(err);

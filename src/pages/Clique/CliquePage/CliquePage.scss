@@ -1,3 +1,5 @@
+@use "../../../styles/partials/variables" as *;
+
 .cliquepage{
     transition: 0.4s ease;
     &__top-bar{
@@ -22,7 +24,7 @@
         height: 100%;
         border:none;
         width: 30%;
-        background-color: #5271ff;
+        background-color: $Primary-blue;
         color: #fff;
         border-radius:  0 0.3125rem 0.3125rem 0;
     }
@@ -58,7 +60,7 @@
     &__btn{
         @extend .clique__input;
         &--filled{
-            background-color: #5271ff;
+            background-color: $Primary-blue;
             color: #fff;
             border: none;
             height: 3rem;

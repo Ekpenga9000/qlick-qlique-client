@@ -2,7 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .user{
-    background-color: #5271ff;
+    text-decoration: none;
+    background-color: $Primary-blue;
     padding-block: 1rem;
     width: 100%;
     color: #fff;
@@ -38,6 +39,11 @@
         @include user-page-banner-list;
         font-size: 1.5rem;
         &:hover{
+            color: #fff;
+        }
+        &--link{
+            @include user-page-banner-list;
+            font-size: 1.5rem;
             color: #fff;
         }
         &--black{

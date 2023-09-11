@@ -34,13 +34,13 @@ function Header({ userId }) {
     
     
     const handleClick = () => {
-        sessionStorage.removeItem("userId");
+      sessionStorage.removeItem("userId");
       sessionStorage.removeItem("token");
       setUserDetails(null);
         navigate("/")
   }
 
-  if (!userDetails) {
+  if (!userDetails || !userId) {
     return <></>;
   }
 
@@ -72,15 +72,13 @@ function Header({ userId }) {
           <li className="user__list">
             <IoIosNotificationsOutline />
           </li>
-          <li className="user__list">
+          <Link to={`/dashboard/${userId}`} className="user__list--link">
             <IoSettingsOutline />
-          </li>
-          {/* <li> */}
+          </Link>
             <Link to={"/cliques"} className="user__list--black">
               <IoIosPeople />
               <span>Qliques</span>
             </Link>
-          {/* </li> */}
           <li className="user__list--black" onClick={handleClick}>
               <CgLogOut />
               <span>Log out</span>
