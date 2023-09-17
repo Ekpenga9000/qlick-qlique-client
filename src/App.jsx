@@ -1,6 +1,6 @@
 import './App.scss';
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Authentication from './pages/Authentication/Authentication';
 import UserPage from './pages/User/UserPage/UserPage';
 import CliquePage from './pages/Clique/CliquePage/CliquePage';
