@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./UserPage.scss";
 import axios from "axios";
 import { useParams } from "react-router";
+import FormatDate from "../../../util/formatDate";
 import UserPostList from "../../../components/UserPostsList/UserPostList";
 import UserFollowList from "../../../components/UserFollowList/UserFollowList";
 import Loading from "../../../components/Loading/Loading";
@@ -38,21 +39,7 @@ function UserPage({ setLoggedIn, setUserId }) {
 
   const { display_name, created_at, bio, id  } = userDeets;
 
-  const formatDate = (dateString) => {
-
-    const dateObject = new Date(dateString);
-    const month = dateObject.getMonth() + 1;
-    const day = dateObject.getDate();
-    const year = dateObject.getFullYear();
-    const hours = dateObject.getHours();
-    const minutes = dateObject.getMinutes();
-    const americanDate = `${month}/${day}/${year}`;
-    const americanTime = `${hours}:${minutes}`;
-    
-    return `${americanDate} ${americanTime}`; 
-  }
-
-  const joined = formatDate(created_at);
+  const joined = FormatDate(created_at);
 
   return (
     <section className="userpage">

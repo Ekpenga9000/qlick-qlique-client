@@ -1,6 +1,7 @@
 import {useState} from "react";
 import { Link } from "react-router-dom";
 import "../Post/Post.scss";
+import FormatDate from "../../util/formatDate";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GoComment } from "react-icons/go";
 import { BsFlag, BsPatchCheckFill } from "react-icons/bs";
@@ -18,22 +19,8 @@ function CliquePost({ post }) {
         display_name, created_by,
         avatar_url, image_url
       } = post; 
-      
-      const formatDate = (dateString) => {
-    
-        const dateObject = new Date(dateString);
-        const month = dateObject.getMonth() + 1;
-        const day = dateObject.getDate();
-        const year = dateObject.getFullYear();
-        const hours = dateObject.getHours();
-        const minutes = dateObject.getMinutes();
-        const americanDate = `${month}/${day}/${year}`;
-        const americanTime = `${hours}:${minutes}`;
-        
-        return `${americanDate} ${americanTime}`; 
-      }
-    
-    const newDate = formatDate(created_by);
+          
+    const newDate = FormatDate(created_by);
     
   return (
     <article className="post">
