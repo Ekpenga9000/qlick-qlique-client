@@ -23,7 +23,6 @@ function UserFollowList({ user_id }) {
         withCredentials: true,
       })
       .then((res) => {
-        console.log("The favourites", res.data);
         setFavouritesData(res.data);
         setIsLoading(false);
         if (!userId || (user_id.toString() !== userId.toString())) {
@@ -51,8 +50,8 @@ function UserFollowList({ user_id }) {
           withCredentials: true,
         }
       )
-      .then(() => {
-        navigate(0);
+      .then((res) => {
+        setFavouritesData(res.data)
       })
       .catch((err) => {
         console.log(err);

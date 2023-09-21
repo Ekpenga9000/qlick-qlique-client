@@ -1,6 +1,3 @@
-import { useState } from "react";
-import axios from "axios";
-import Stack from "@mui/material/Stack";
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -10,64 +7,22 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import "./clique.scss";
 
-function Clique({ clique }) {
-  const { id, name, category, description, display_name, is_favourite, status } =
+function Clique({ clique, handleRemoveFromFavourites, handleAddToFavourites }) {
+  const { id, name, category, description, display_name, status } =
     clique;
-  const [isFavourite, setIsFavourite] = useState(status === "Added");
-  const userId = sessionStorage.getItem("userId");
-  const token = sessionStorage.getItem("token");
+  
   const navigate = useNavigate();
   const handleNavigation = () => {
     navigate(`/cliques/${id}`);
   };
 
-  const handleAddToFavourites = () => {
-    axios
-      .post(
-        `${import.meta.env.VITE_SERVER_URL}/favourites`,
-        {
-          user_id: userId,
-          clique_id: id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        }
-      )
-      .then(() => {
-        navigate(0);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const handleFollow = () => {
+    handleAddToFavourites(id);
+  }
 
-  const handleRemoveFromFavourites = () => {
-    axios
-      .post(
-        `${
-          import.meta.env.VITE_SERVER_URL
-        }/favourites/remove`,
-        {
-          user_id: userId,
-          clique_id:id
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        }
-      )
-      .then(() => {
-        navigate(0);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const handleUnfollow = () => {
+    handleRemoveFromFavourites(id);
+  }
 
   return (
     <article className="clique">
@@ -81,8 +36,7 @@ function Clique({ clique }) {
             >
               {name} by {display_name}
             </Typography>
-            {isFavourite && <Chip label="Following" />}
-            {!isFavourite && <Chip label="Not Following" variant="outlined" />}
+            {status === "Added" ? <Chip label="Following" /> : <Chip label="Not Following" variant="outlined" />}
           </div>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             {category}
@@ -94,14 +48,13 @@ function Clique({ clique }) {
             <Button size="small" onClick={handleNavigation}>
               Visit Clique
             </Button>
-            {!isFavourite && (
-              <Button size="small" onClick={handleAddToFavourites}>
-                + Follow
-              </Button>
-            )}
-            {isFavourite && (
-              <Button size="small" onClick={handleRemoveFromFavourites}>
+            {status === "Added" ? (
+              <Button size="small" onClick={handleUnfollow}>
                 - Unfollow
+              </Button>
+            ): (
+              <Button size="small" onClick={handleFollow}>
+                + Follow
               </Button>
             )}
           </div>

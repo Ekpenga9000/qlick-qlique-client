@@ -16,7 +16,7 @@ function CliquePage() {
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const fetchCliques = () => {
     axios
       .get(`${import.meta.env.VITE_SERVER_URL}/cliques`, {
         headers: {
@@ -25,13 +25,63 @@ function CliquePage() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.clique);
         setCliqueData(res.data.clique);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [userId]);
+  }
+  useEffect(() => {
+    fetchCliques()
+  }, [token]);
+
+  const handleAddToFavourites = (id) => {
+    axios
+      .post(
+        `${import.meta.env.VITE_SERVER_URL}/favourites`,
+        {
+          user_id: userId,
+          clique_id: id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        fetchCliques();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleRemoveFromFavourites = (id) => {
+    axios
+      .post(
+        `${
+          import.meta.env.VITE_SERVER_URL
+        }/favourites/remove`,
+        {
+          user_id: userId,
+          clique_id:id
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        fetchCliques();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -186,6 +236,8 @@ function CliquePage() {
             return (
               <Clique
                 clique={clique}
+                handleRemoveFromFavourites={handleRemoveFromFavourites}
+                handleAddToFavourites={handleAddToFavourites}
                 key={clique?.id}
                 className="cliqueList__item"
               />
