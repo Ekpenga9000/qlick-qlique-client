@@ -28,6 +28,7 @@ function PostList({ cliqueid }) {
   const [personalProfile, setPersonalProfile] = useState({});
   const postForm = useRef();
 
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_SERVER_URL}/cliques/${cliqueid}/posts`, {
@@ -56,6 +57,7 @@ function PostList({ cliqueid }) {
       });
   }, [token, userId]);
 
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFile(file);
@@ -81,7 +83,6 @@ function PostList({ cliqueid }) {
   const handlePostBtn = (e) => {
     const newContent = e.target.value;
     setContentValue(newContent);
-    console.log("The content form", newContent);
 
     if (newContent.trim() !== "") {
       setHasContent(true);
@@ -109,14 +110,10 @@ function PostList({ cliqueid }) {
         withCredentials: true,
       })
       .then((response) => {
-        let newDataArr = postData;
-        newDataArr.unshift(response.data.post);
-        console.log(response.data.post);
+        setPostData(response.data.post);
         e.target.reset();
         setContentValue("");
         setHasContent(false);
-        setPostData(newDataArr);
-        navigate(0);
       })
       .catch((error) => {
         console.log(error);

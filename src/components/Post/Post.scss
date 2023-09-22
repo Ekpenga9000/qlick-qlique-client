@@ -35,7 +35,6 @@
         cursor: pointer;
     }
     &__username{
-        // color: $Dark-slate-gray;
         font-weight: 500;
         cursor: pointer;
         text-decoration: none;
@@ -61,14 +60,12 @@
     }
     &__impressions{
         background-color:$Light-gray2;
-        // background-color:#5272ffc9;
         padding-block: 1rem;
         padding-inline: 0.625rem;
         display: flex;
         justify-content: space-between;
         font-size: 1rem;
         color:$Dark-slate-gray;
-        // color:#fff;
         border-radius: 0 0 0.3125rem 0.3125rem;
     }
 }
