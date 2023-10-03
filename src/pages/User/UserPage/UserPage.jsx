@@ -7,6 +7,7 @@ import UserPostList from "../../../components/UserPostsList/UserPostList";
 import UserFollowList from "../../../components/UserFollowList/UserFollowList";
 import Loading from "../../../components/Loading/Loading";
 
+
 function UserPage({ setLoggedIn, setUserId }) {
   const { userId } = useParams();
   const [userDeets, setUserDeets] = useState(null);
@@ -34,29 +35,30 @@ function UserPage({ setLoggedIn, setUserId }) {
   }, [userId]);
 
   if (!userDeets) {
-    return <Loading/>;
+    return <Loading />;
   }
 
-  const { display_name, created_at, bio, id  } = userDeets;
+  const { display_name, created_at, bio, id } = userDeets;
 
   const joined = FormatDate(created_at);
 
   return (
     <section className="userpage">
-      {userDeets && <article className="userpage__profile">
-        <h3>{display_name}</h3>
-        <p>{bio}</p>
-        <address>Joined at {joined}</address>
-      </article>}
+      {/* {userDeets && (
+        <article className="userpage__profile">
+          <h3>{display_name}</h3>
+          <p>{bio}</p>
+          <address>Joined at {joined}</address>
+        </article>
+      )} */}
       <article className="userpage__main">
         <div className="userpage__following">
-          <UserFollowList user_id={ id }/>
+          <UserFollowList user_id={id} />
         </div>
         <div className="userpage__posts">
-          <UserPostList user_id={ id } />
+          <UserPostList user_id={id} />
         </div>
       </article>
-     
     </section>
   );
 }

@@ -13,8 +13,9 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
-    
+  
   return (
+    <section className='app'>
     <BrowserRouter>
      {userId && <Header userId={ userId } />}
       <Routes>
@@ -25,7 +26,8 @@ function App() {
         <Route path='/cliques/:cliqueid' element={<CliqueDetailsPage />} />
         <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
-      </BrowserRouter> 
+      </BrowserRouter>
+      </section>
   )
 }
 

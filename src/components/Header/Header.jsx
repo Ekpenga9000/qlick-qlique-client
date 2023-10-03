@@ -7,9 +7,10 @@ import { IoIosNotificationsOutline, IoIosPeople } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BsPeople, BsChatLeftDots } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
+import altLogo from "../../assets/images/alt-logo.png";
 
 function Header({ userId }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
@@ -31,14 +32,13 @@ function Header({ userId }) {
         });
     }
   }, [userId]);
-    
-    
-    const handleClick = () => {
-      sessionStorage.removeItem("userId");
-      sessionStorage.removeItem("token");
-      setUserDetails(null);
-        navigate("/")
-  }
+
+  const handleClick = () => {
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
+    setUserDetails(null);
+    navigate("/");
+  };
 
   if (!userDetails || !userId) {
     return <></>;
@@ -48,21 +48,67 @@ function Header({ userId }) {
 
   return (
     <>
-    <article className="user" key={id}>
-      <Link to={ `/profiles/${userId}` } className="user__profile">
-        <div className="user__img-container">
-          <img
-            src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`}
-            alt={display_name}
-            crossOrigin="anonymous"
-            className="user__img"
-          />
-        </div>
+      {/* <article className="user" key={id}>
+        <Link to={`/profiles/${userId}`} className="user__profile">
+          <div className="user__img-container">
+            <img
+              src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`}
+              alt={display_name}
+              crossOrigin="anonymous"
+              className="user__img"
+            />
+          </div>
 
-        <span className="user__username">{display_name}</span>
-      </Link>
-      <div className="user__messages">
-        <ul className="user__ul">
+          <span className="user__username">{display_name}</span>
+        </Link>
+        <div className="user__messages">
+          <ul className="user__ul">
+            <li className="user__list">
+              <BsChatLeftDots />
+            </li>
+            <li className="user__list">
+              <BsPeople />
+            </li>
+            <li className="user__list">
+              <IoIosNotificationsOutline />
+            </li>
+            <Link to={`/dashboard/${userId}`} className="user__list--link">
+              <IoSettingsOutline />
+            </Link>
+            <Link to={"/cliques"} className="user__list--black">
+              <IoIosPeople />
+              <span>Qliques</span>
+            </Link>
+            <li className="user__list--black" onClick={handleClick}>
+              <CgLogOut />
+              <span>Log out</span>
+            </li>
+          </ul>
+        </div>
+      </article> */}
+
+      <article className="user" key={id}>
+        <Link to={`/profiles/${userId}`} className="user__profile">
+          <div className="user__img-container">
+            <img
+              src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`}
+              alt={display_name}
+              crossOrigin="anonymous"
+              className="user__img"
+            />
+          </div>
+        </Link>
+        <Link to={"/cliques"}  className="user__profile">
+        <div className="user__logo-container">
+            <img
+              src={altLogo}
+              alt={"Qlick-Qlique logo"}
+              crossOrigin="anonymous"
+              className="user__logo"
+            />
+          </div>
+            </Link>
+        <ul className="user__menu">
           <li className="user__list">
             <BsChatLeftDots />
           </li>
@@ -72,22 +118,18 @@ function Header({ userId }) {
           <li className="user__list">
             <IoIosNotificationsOutline />
           </li>
-          <Link to={`/dashboard/${userId}`} className="user__list--link">
-            <IoSettingsOutline />
-          </Link>
-            <Link to={"/cliques"} className="user__list--black">
-              <IoIosPeople />
-              <span>Qliques</span>
+          <li className="user__list">
+            <Link to={`/dashboard/${userId}`} className="user__list--link">
+              <IoSettingsOutline />
             </Link>
-          <li className="user__list--black" onClick={handleClick}>
-              <CgLogOut />
-              <span>Log out</span>
+          </li>
+          <li className="user__list--black user__list" onClick={handleClick}>
+            <CgLogOut />
+            {/* Log out */}
           </li>
         </ul>
-      </div>
       </article>
-      
-      </>  
+    </>
   );
 }
 

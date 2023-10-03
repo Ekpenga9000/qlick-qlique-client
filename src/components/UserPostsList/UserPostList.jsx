@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Post from "../Post/Post";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import nopost from "../../assets/images/nopost.svg";
 import "./UserPostList.scss";
 
+
 function UserPostList({ user_id }) {
-  if (!user_id) {
-    return <></>;
+  const navigate = useNavigate();
+  if (!user_id) { 
+    return navigate("/");
   }
   const [postList, setPostList] = useState([]);
   const token = sessionStorage.getItem("token");

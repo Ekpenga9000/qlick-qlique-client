@@ -1,10 +1,20 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
+::-webkit-scrollbar {
+    width: 12px; /* Adjust width as needed */
+  }
 .userFollowList{
     padding: 1rem 1.5rem;
-    min-height: 100vh;
+    @include sticky;
+        top: 11rem;
+        max-height: 70vh;
+        overflow-y: scroll;
     &__title{
         padding-block: 1rem;
+        margin-bottom:1rem;
+        // @include sticky;
+        // top:0;
     }
     &__img-div{
         height:11rem;

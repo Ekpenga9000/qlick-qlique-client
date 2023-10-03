@@ -1,71 +1,76 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.post{
-    margin-bottom: 1rem;
+.clique-post{
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    border-radius: 0.3125rem;
+    align-items: center;
+}
+.post{
+    margin-block: 1rem;
+    width: 40rem;
+    &__header{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__details{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
     &__img-container{
         height: 3rem;
         width: 3rem;
         border-radius:50%;
-        cursor: pointer;
-    }
-    &__user-details{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-    &__date{ 
-        font-weight: 500;
-        font-size: 0.85rem;
-        color: $Light-slate-gray;
-    }
-    &__clique{
-        font-size:0.8rem;
-        font-weight: 500;
-        background-color: $Primary-blue;
-        padding: 0.3rem 0.7rem;
-        border-radius:0.3125rem;
-        text-decoration: none;
-        color: #fff;
-        cursor: pointer;
-    }
-    &__username{
-        font-weight: 500;
-        cursor: pointer;
-        text-decoration: none;
-        color: $Primary-blue;
-    }
-    &__content{
-        margin-bottom:0.5rem;
-        width: 30rem;
-        word-break: break-all;
-
-    }
-    &__media{
-        @include post-img;
-        border-radius: 0.3125rem 0.3125rem 0 0; 
     }
     &__img{
-        @include post-img;
-        border-radius: 50%;
+        @include img-cover;
+        border-radius:50%;
+    }
+    &__display-name{
+        color: $Primary-blue;
+        font-size: 0.9375rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    &__date{
+        color: $Dark-gray;
+        font-size: 0.875rem;
+    }
+    &__clique{
+        @extend .post__details;
+        height: 80%;
+        max-width: 70%;
+        @include font-ellipsis;
+        font-size: 0.875rem;
+        text-decoration: none;
+        background-color: $Primary-blue;
+        padding: 0.5rem 0.7rem;
+        border-radius: 0.3125rem;
+        color: #fff;
+        &--alternate{
+            color: $Primary-blue;
+        }
+    }
+    &__content{
+        font-size:0.9375rem;
+        word-wrap: break-word;
+        margin-block:1.5rem;
     }
     &__media-container{
         height: 30rem;
-        width: 30rem; 
+        padding-block: 1rem;
+    }
+    &__media{
+        @include img-cover;
     }
     &__impressions{
-        background-color:$Light-gray2;
-        padding-block: 1rem;
-        padding-inline: 0.625rem;
         display: flex;
         justify-content: space-between;
-        font-size: 1rem;
-        color:$Dark-slate-gray;
-        border-radius: 0 0 0.3125rem 0.3125rem;
+        align-items: center;
+        padding-block: 1rem;
+        border-top: 0.0625rem solid $Light-slate-gray;
     }
+
 }

@@ -1,16 +1,24 @@
-import Chip from "@mui/material/Chip";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import {
+  AiOutlineHeart,
+  AiFillHeart,
+  AiOutlineStar,
+  AiFillStar,
+} from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "./clique.scss";
 
 function Clique({ clique, handleRemoveFromFavourites, handleAddToFavourites }) {
-  const { id, name, category, description, display_name, status } =
-    clique;
-  
+  const {
+    id,
+    name,
+    category,
+    description,
+    display_name,
+    banner_url,
+    avatar_url,
+    status,
+  } = clique;
+
   const navigate = useNavigate();
   const handleNavigation = () => {
     navigate(`/cliques/${id}`);
@@ -18,49 +26,58 @@ function Clique({ clique, handleRemoveFromFavourites, handleAddToFavourites }) {
 
   const handleFollow = () => {
     handleAddToFavourites(id);
-  }
+  };
 
   const handleUnfollow = () => {
     handleRemoveFromFavourites(id);
-  }
+  };
 
   return (
-    <article className="clique">
-      <Card sx={{ minWidth: 275 }}>
-        <CardContent>
-          <div className="clique__btn-div">
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              {name} by {display_name}
-            </Typography>
-            {status === "Added" ? <Chip label="Following" /> : <Chip label="Not Following" variant="outlined" />}
+    <section className="clique">
+      <article className="card">
+        <div className="card__banner">
+          <img
+            src={`${import.meta.env.VITE_SERVER_URL}/${banner_url}`}
+            alt={`${name}`}
+            className="card__img"
+            onClick={handleNavigation}
+          />
+        </div>
+        <div className="card__content">
+          <div className="card__header">
+            <p className="card__title" onClick={handleNavigation}>
+              {name}
+            </p>
+            <div className="card__icon">
+              {status === "Added" ? (
+                <AiFillStar
+                  className="card__icon--following"
+                  onClick={handleUnfollow}
+                />
+              ) : (
+                <AiOutlineStar
+                  className="card__icon--unfollow"
+                  onClick={handleFollow}
+                />
+              )}
+            </div>
           </div>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {category}
-          </Typography>
-          <Typography variant="body2">{description}</Typography>
-        </CardContent>
-        <CardActions>
-          <div className="clique__btn-div">
-            <Button size="small" onClick={handleNavigation}>
-              Visit Clique
-            </Button>
-            {status === "Added" ? (
-              <Button size="small" onClick={handleUnfollow}>
-                - Unfollow
-              </Button>
-            ): (
-              <Button size="small" onClick={handleFollow}>
-                + Follow
-              </Button>
-            )}
+          <div className="author">
+            <div className="author__img-container">
+              <img
+                src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`}
+                alt={`${display_name}`}
+                className="author__img"
+                onClick={handleNavigation}
+              />
+            </div>
+            <p className="author__name">{display_name}</p>
           </div>
-        </CardActions>
-      </Card>
-    </article>
+          <p className="card__category">{category}</p>
+          <p className="card__description">{description}</p>
+        </div>
+      </article>
+    </section>
   );
 }
 
