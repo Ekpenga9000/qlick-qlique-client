@@ -1,8 +1,12 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .userPostList{
+    @include sticky;
+    top: 0;
     padding: 1rem 1.5rem;
     &__title{
         padding-block: 1rem;
     }
 }
+

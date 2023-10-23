@@ -1,14 +1,50 @@
 @use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
 
-*, *::before,*::after{
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
 }
 
-body{
+body {
   background-color: #5272ff0e;
 }
 
-.app{
+.app {
   display: flex;
+  // flex-direction: column-reverse;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: scroll;
+  @include desktop-viewport {
+    flex-direction: row;
+  }
+  &__header {
+    &--top {
+      @include sticky;
+      top: 0;
+      z-index: 50;
+      @include desktop-viewport {
+        display: none;
+      }
+    }
+    &--bottom {
+      @include sticky;
+      bottom: 0;
+      @include desktop-viewport {
+        display: none;
+      }
+    }
+    &--side {
+      display: none;
+      @include desktop-viewport {
+        display: block;
+        @include sticky;
+        top: 0;
+        height: 100vh;
+      }
+    }
+  }
 }

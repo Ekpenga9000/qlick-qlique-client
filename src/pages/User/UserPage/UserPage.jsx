@@ -12,6 +12,9 @@ function UserPage({ setLoggedIn, setUserId }) {
   const { userId } = useParams();
   const [userDeets, setUserDeets] = useState(null);
 
+  const [postClicked, setPostClicked] = useState(true);
+
+
   useEffect(() => {
     const token = sessionStorage.getItem("token");
 
@@ -42,15 +45,30 @@ function UserPage({ setLoggedIn, setUserId }) {
 
   const joined = FormatDate(created_at);
 
+  const handleDisplayFollowing = () => {
+    setPostClicked(false);
+  }
+
+  const handleDisplayPost = () => {
+    setPostClicked(true);
+  }
+
   return (
     <section className="userpage">
-      {/* {userDeets && (
-        <article className="userpage__profile">
-          <h3>{display_name}</h3>
-          <p>{bio}</p>
-          <address>Joined at {joined}</address>
-        </article>
-      )} */}
+      <ul className="toggle">
+        <li className={`toggle__item${postClicked ? `--bold`:""}`} onClick={handleDisplayPost}>
+          Posts
+        </li>
+        <li className={`toggle__item${postClicked ?"":`--bold`}`} onClick={handleDisplayFollowing}>
+          Following
+        </li>
+      </ul>
+     {!postClicked && <div className="userpage__mobile">
+        <UserFollowList user_id={id} />
+      </div> }
+      {postClicked && <div className="userpage__mobile">
+        <UserPostList user_id={id} />
+      </div>}
       <article className="userpage__main">
         <div className="userpage__following">
           <UserFollowList user_id={id} />

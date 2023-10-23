@@ -1,111 +1,63 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-// .user{
-//     @include sticky;
-//     top: 0rem;
-//     text-decoration: none;
-//     background-color: $Primary-blue;
-//     padding-block: 1rem;
-//     width: 100%;
-//     color: #fff;
-//     display: flex;
-//     flex-direction: column;
-//     // justify-content: space-evenly;
-//     align-items: center;
-//     &__profile{
-//         display: flex;
-//         justify-content: start;
-//         align-items: center;
-//         gap: 1rem;
-//         text-decoration: none;
-//     }
-//     &__username{
-//         font-weight: 500;
-//         color: #fff;
-//     }
-//     &__img-container{
-//         height: 3rem;
-//         width: 3rem;
-//         border-radius:50%;
-//     }
-//     &__img{
-//         height: 100%;
-//         width: 100%;
-//         object-fit: cover;
-//         border-radius:50%;
-//     }
-//     &__ul{
-//         display: flex;
-//         flex-direction: column; 
-//         align-items: start;
-//     }
-//     &__list{
-//         // @include user-page-banner-list;
-//         list-style-type: none;
-//         font-size: 1.5rem;
-//         cursor: pointer;
-//         &:hover{
-//             color: #fff;
-//         }
-//         &--link{
-//             @include user-page-banner-list;
-//             font-size: 1.5rem;
-//             color: #fff;
-//         }
-//         &--black{
-//             @include user-page-banner-list;
-//             text-decoration: none;
-//             border: 0.0625rem solid $Light-slate-gray;
-//             color: #fff;
-//             border-radius: 1.875rem;
-//             &:hover{
-//                 border: 0.0625rem solid $Pure-white;
-//                 color: #fff;
-//             }
-//         }
-//     }
-
-// }
-
-.user{
+.user {
     background-color: $Primary-blue;
     padding: 1rem;
     display: flex;
+    align-items: center;
+  @include desktop-viewport {
     flex-direction: column;
     align-items: center;
-    &__img-container{
-        height: 2.5rem;
-        width: 2.5rem;
-        border-radius:50%;
+    height: 100vh;
+    width: auto;
+  }
+
+  &__img-container {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+  }
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  &__logo-container {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-inline: 1.5rem;
+    @include desktop-viewport{
+      margin-top: 1.5rem;
+      margin-inline: auto;
     }
-    &__img{
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        border-radius:50%;
+  }
+  &__logo {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  &__menu {
+    padding: 0;
+    @include desktop-viewport{
+      
     }
-    &__logo-container{
-        height: 1.5rem;
-        width: 1.5rem;
-        margin-top: 1.5rem;
+  }
+  &__list {
+    display: inline-block;
+    list-style-type: none;
+    margin-inline: 1rem;
+    color: #fff;
+    cursor: pointer;
+    @include desktop-viewport{
+    display: block;
+    margin-block: 2rem;
+    margin-inline: auto;
     }
-    &__logo{
-        height: 100%;
-        width: 100%;
-        object-fit: contain;
+    
+    &--link {
+      @extend .user__list;
     }
-    &__menu{
-        padding: 0;
-    }
-    &__list{
-        display:block;
-        list-style-type: none;
-        color: #fff;
-        margin-block: 2rem;
-        cursor: pointer;
-        &--link{
-            @extend .user__list;
-        }
-    }
+  }
 }

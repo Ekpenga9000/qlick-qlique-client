@@ -1,0 +1,14 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.floor{
+    background-color: $Primary-blue;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    font-size: 1.3rem;
+    &__item{
+        color: #fff;
+        text-decoration: none;
+    }
+}

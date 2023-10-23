@@ -13,6 +13,10 @@
         display: flex;
         justify-content: space-between;
     }
+    &__href{
+        text-decoration: none;
+        color: #000;
+    }
     &__details{
         display: flex;
         align-items: center;
@@ -65,12 +69,27 @@
     &__media{
         @include img-cover;
     }
-    &__impressions{
+    &__impressions-div{
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding-block: 1rem;
         border-top: 0.0625rem solid $Light-slate-gray;
+    }
+    &__impressions{
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        cursor: pointer;
+        color: $Light-slate-gray;
+        transition: 0.4s ease-in-out;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.3125rem;
+        text-decoration: none;
+        &:hover{
+            background-color: $Light-slate-gray;
+            color: #fff;
+        }
     }
 
 }

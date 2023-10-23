@@ -1,12 +1,14 @@
 @use "../../styles/partials/variables" as *;
 .userFollow{
+    background-color: #fff;
     margin-block: 0.5rem;
-    border: 0.0625rem solid $Light-slate-gray;
+    // border: 0.0625rem solid $Light-slate-gray;
     border-radius: 0.3125rem;
     padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
     &__link{
         text-decoration: none;
     }
@@ -15,6 +17,14 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        padding-right: 1rem;
+        padding-right: 5rem;
+        font-weight: 600;
+
+    }
+    &__follow{
+        color: $Primary-blue;
+        &:hover{
+            color: $Primary-blue-hover;
+        }
     }
 }

@@ -68,8 +68,8 @@ function UserFollowList({ user_id }) {
       ) : (
         <>
           {!!favouritesData.length ? (
-            <Card>
-              <CardContent>
+            // <Card>
+              //  <CardContent>
                 <div className="userFollowList__container">
                   {favouritesData.map((favorite) => (
                     <UserFollow
@@ -78,9 +78,9 @@ function UserFollowList({ user_id }) {
                       key={favorite.favourites_id}
                     />
                   ))}
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+              // </CardContent>
+            // </Card>
           ) : (
             <div className="userFollowList__noClique-div">
               <div className="userFollowList__img-div">

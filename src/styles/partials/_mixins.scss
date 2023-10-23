@@ -1,5 +1,17 @@
 @use "../partials/variables" as *;
 
+@mixin tablet-viewport{
+  @media screen and (min-width:$tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-viewport{
+  @media screen and (min-width:$desktop){
+    @content;
+  }
+}
+
 @mixin form-input-style {
   display: flex;
   justify-content: start;

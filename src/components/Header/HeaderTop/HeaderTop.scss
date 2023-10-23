@@ -1,0 +1,30 @@
+@use "../../../styles/partials/mixins" as *; 
+@use "../../../styles/partials/variables" as *;
+
+.top{
+    // border: 1px solid $Primary-blue;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    &__profile-container{
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+    }
+    &__profile{
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    &__logo-container{
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    &__logo{
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}

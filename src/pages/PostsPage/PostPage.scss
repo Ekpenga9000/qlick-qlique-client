@@ -1,0 +1,23 @@
+@use "../../styles/partials/mixins" as *; 
+@use "../../styles/partials/variables" as *;
+
+.post-page{
+    width: 100vw;
+    padding: 1rem;
+    &__return{
+        text-decoration: none;
+        color: $Primary-blue;
+        border: 1px solid $Primary-blue;
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        transition: 0.4s ease-in-out;
+        &:hover{
+            color: #fff;
+            background-color: $Primary-blue;
+        }
+    }
+}

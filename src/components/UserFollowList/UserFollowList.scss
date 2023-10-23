@@ -2,27 +2,40 @@
 @use "../../styles/partials/mixins" as *;
 
 ::-webkit-scrollbar {
-    width: 12px; /* Adjust width as needed */
-  }
-.userFollowList{
-    padding: 1rem 1.5rem;
+  width: 0.2rem;
+}
+::-webkit-scrollbar-thumb{
+  background-color: $Primary-blue;
+}
+::-webkit-scrollbar-track{
+  background-color: $Light-gray;
+}
+.userFollowList {
+  padding: 1rem 1.5rem;
+  @include desktop-viewport {
     @include sticky;
-        top: 11rem;
-        max-height: 70vh;
-        overflow-y: scroll;
-    &__title{
-        padding-block: 1rem;
-        margin-bottom:1rem;
-        // @include sticky;
-        // top:0;
+    top: 0;
+    height: 100vh;
+  }
+
+  &__container {
+    background-color: #fff;
+    @include desktop-viewport {
+      overflow-y: scroll;
+      height: 70vh;
     }
-    &__img-div{
-        height:11rem;
-        width:11rem
-    }
-    &__img{
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
+  }
+  &__title {
+      padding-block: 1rem;
+      margin-bottom: 1rem;
+  }
+  &__img-div {
+    height: 11rem;
+    width: 11rem;
+  }
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
