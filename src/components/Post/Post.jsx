@@ -32,8 +32,8 @@ function Post({ post }) {
   // console.log("This is the likes", like_id)
   return (
     <section className="post">
-    <Card>
-      <CardContent>
+    <div>
+      <div>
         <article className="post__header">
           <div className="post__details">
             <div className="post__img-container">
@@ -60,14 +60,11 @@ function Post({ post }) {
             />
           </div>
         )}
-        {/* <article className="post__impressions">
-          <AiOutlineHeart/>
-          <GoComment />
-           <CiSaveDown2 />
-           <BsFlag />
-        </article> */}
-      </CardContent>
-      </Card>
+        <article className="post__impressions">
+          
+        </article>
+      </div>
+      </div>
       </section>
   );
 }
