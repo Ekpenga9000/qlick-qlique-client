@@ -148,7 +148,7 @@ function PostList({ cliqueid }) {
             id="content"
             cols="30"
             rows="10"
-            placeholder="What are your thought..."
+            placeholder="What are your thoughts..."
             value={contentValue}
             onChange={handlePostBtn}
             className="postList__text-area"

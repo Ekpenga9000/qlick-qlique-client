@@ -8,6 +8,7 @@ import { GoComment } from "react-icons/go";
 import { FaUserCheck } from "react-icons/fa";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import logo_lone from "../../assets/images/logo-lone.png";
 
 function CliquePost({ post }) {
   if (!post) {
@@ -16,6 +17,11 @@ function CliquePost({ post }) {
 
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+
+  // comment
+
+  const [comVal, setComVal] = useState("");
+  const [hasInput, setHasInput] = useState(false);
 
   const user = sessionStorage.getItem("userId");
   const token = sessionStorage.getItem("token");
@@ -34,120 +40,164 @@ function CliquePost({ post }) {
   const newDate = FormatDate(created_by);
 
   const handleClick = () => {
-    alert(`Ow! you clicked me! ${id}`)
-  }
+    alert(`Ow! you clicked me! ${id}`);
+  };
 
-  const handleUnLike = async() => {
-    setIsLiked(!isLiked);
+  const handleUnLike = async () => {
     try {
-      const response = await axios.put(`${import.meta.env.VITE_SERVER_URL}/likes/unlike`, {
-        post_id: id
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }, withCredentials:true
-      })
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/likes/unlike`,
+        {
+          post_id: id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
 
-      // setIsLiked(false);
+      setIsLiked(false);
       setLikeCount(response.data.data);
-
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  const handleLike = async() => {
-    setIsLiked(!isLiked);
-
+  const handleLike = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/likes`, {
-        post_id: id
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }, withCredentials:true
-      })
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/likes`,
+        {
+          post_id: id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
 
       setIsLiked(true);
       setLikeCount(response.data.data);
-
     } catch (error) {
       console.log(error);
     }
-    
-  }
+  };
 
   useEffect(() => {
     const fetchLikes = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/likes/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }, withCredentials:true
-        });
-
-        console.log("This are all likes", response.data, content)
+        const response = await axios.get(
+          `${import.meta.env.VITE_SERVER_URL}/likes/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
+        
         setIsLiked(response.data.userLiked);
         setLikeCount(response.data.likesCount);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchLikes();
-  }, [id, token])
-  return (
+  }, [id, token]);
 
+  const handleInput = (e) => {
+    setComVal(e.target.value);
+  };
+
+  const handleChange = () => {
+    setHasInput(true);
+  };
+  const handleBlur = () => {
+    if (comVal.trim() === "") {
+      setHasInput(false);
+    }
+  };
+
+  return (
     <section className="clique-post">
       <div to={`/${clique_id}/posts/${id}`} className="post">
-        <Card>
-          <CardContent>
             <Link to={`/${clique_id}/posts/${id}`} className="post__href">
-            <article className="post__header">
-              <div className="post__details">
-                <div className="post__img-container">
+              <article className="post__header">
+                <div className="post__details">
+                  <div className="post__img-container">
+                    <img
+                      src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`}
+                      alt={display_name}
+                      className="post__img"
+                    />
+                  </div>
+                  <div className="post__author">
+                    <p className="post__display-name">
+                      {display_name}
+                      {user === user_id.toString() && <FaUserCheck />}
+                    </p>
+                    <p className="post__date">{FormatDate(created_by)}</p>
+                  </div>
+                </div>
+              </article>
+              <p className="post__content">{content}</p>
+              {image_url && (
+                <div className="post__media-container">
                   <img
-                    src={`${import.meta.env.VITE_SERVER_URL}/${avatar_url}`}
-                    alt={display_name}
-                    className="post__img"
+                    src={`${import.meta.env.VITE_SERVER_URL}/${image_url}`}
+                    alt={`Uploaded by ${display_name}`}
+                    className="post__media"
                   />
                 </div>
-                <div className="post__author">
-                  <p className="post__display-name">
-                    {display_name}
-                    {user === user_id.toString() && <FaUserCheck />}
-                  </p>
-                  <p className="post__date">{FormatDate(created_by)}</p>
-                </div>
-              </div>
-            </article>
-            <p className="post__content">{content}</p>
-            {image_url && (
-              <div className="post__media-container">
-                <img
-                  src={`${import.meta.env.VITE_SERVER_URL}/${image_url}`}
-                  alt={`Uploaded by ${display_name}`}
-                  className="post__media"
-                />
-              </div>
-            )}
+              )}
             </Link>
             <article className="post__impressions-div">
-              {isLiked && <div className="post__impressions--liked" onClick={handleUnLike}>
-                <AiFillHeart /> { likeCount }
-              </div>}
-
-              {!isLiked && <div className="post__impressions" onClick={handleLike}>
-                <AiOutlineHeart /> { likeCount }
-              </div> }
-              
-              <div className="post__impressions" onClick={handleClick}>
-                <GoComment/> Comment
+              <div className="post__impressions">
+                {isLiked && (
+                  <AiFillHeart
+                    className="post__impressions--liked"
+                    onClick={handleUnLike}
+                  />
+                )}
+                {!isLiked && <AiOutlineHeart onClick={handleLike} />}
+                {likeCount > 1 && <span> {likeCount} Likes</span>}
+                {likeCount < 2 && <span> {likeCount} Like</span>}
               </div>
-              
+
+              <div className="post__impressions" onClick={handleClick}>
+                <GoComment /> Comment
+              </div>
             </article>
-          </CardContent>
-        </Card>
+            <div className="comment">
+          <div className="comment__popup">
+            <div className="comment__img-div">
+              <img src={logo_lone} alt="" className="comment__img" />
+            </div>
+            {!hasInput && <p onClick={handleChange}>Write a comment...</p>}
+            {hasInput && (
+              <form className="comment__form">
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder="Write a comment..."
+                  className="comment__input"
+                  onChange={handleInput}
+                  onBlur={handleBlur}
+                  value={comVal}
+                  autoFocus
+                ></textarea>
+                <button>Post</button>
+              </form>
+            )}
+          </div>
+        </div>        
       </div>
     </section>
   );

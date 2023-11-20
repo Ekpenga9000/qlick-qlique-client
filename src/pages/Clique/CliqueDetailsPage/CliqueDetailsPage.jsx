@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import "./CliqueDetailsPage.scss";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -43,7 +41,7 @@ function CliqueDetailsPage() {
       <div>
         <article className="clique-detail__hero">
           <div className="clique-detail__details">
-            <h2 className="clique-detail__h2">Clique page</h2>
+            {/* <h2 className="clique-detail__h2">Clique page</h2> */}
             <Card sx={{ minWidth: 600 }}>
               <CardContent>
                 <Typography
