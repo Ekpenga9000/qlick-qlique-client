@@ -9,6 +9,7 @@ import { FaUserCheck } from "react-icons/fa";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import logo_lone from "../../assets/images/logo-lone.png";
+import PostCommentForm from "../PostCommentForm/PostCommentForm";
 
 function CliquePost({ post }) {
   if (!post) {
@@ -125,7 +126,7 @@ function CliquePost({ post }) {
 
   return (
     <section className="clique-post">
-      <div to={`/${clique_id}/posts/${id}`} className="post">
+      <div className="post">
             <Link to={`/${clique_id}/posts/${id}`} className="post__href">
               <article className="post__header">
                 <div className="post__details">
@@ -180,21 +181,7 @@ function CliquePost({ post }) {
             </div>
             {!hasInput && <p onClick={handleChange}>Write a comment...</p>}
             {hasInput && (
-              <form className="comment__form">
-                <textarea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="10"
-                  placeholder="Write a comment..."
-                  className="comment__input"
-                  onChange={handleInput}
-                  onBlur={handleBlur}
-                  value={comVal}
-                  autoFocus
-                ></textarea>
-                <button>Post</button>
-              </form>
+              <PostCommentForm handleInput={handleInput} handleBlur={handleBlur} comVal={ comVal } />
             )}
           </div>
         </div>        

@@ -1,0 +1,22 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.comment-form{
+    padding-inline:1rem;
+    &__input{
+        font-family: sans-serif;
+        min-height: 10rem;
+        width: 22rem;
+        resize:none;
+        padding:0.3rem 0.5rem;
+        border: none;
+        outline: 1px solid $Light-slate-gray;
+    }
+    &__btn{
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        border: none;
+        background-color: $Primary-blue;
+        color: #fff;
+    }
+}
